@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingCart, Search, MapPin, CheckCircle2, X } from "lucide-react";
 import { useAppStore, type Product } from "@/store/useAppStore";
 import AuthGuard from "@/components/auth/AuthGuard";
+import Link from "next/link";
 
 const PRODUCTS: Product[] = [
   {
@@ -97,10 +98,13 @@ export default function MarketplacePage() {
               </p>
             </div>
             {/* Cart indicator */}
-            <div className="glass-card" style={{ padding: "12px 20px", display: "flex", alignItems: "center", gap: "10px" }}>
-              <ShoppingCart size={16} color="#39FF14" />
-              <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "14px", fontWeight: 600, color: "#efffe3" }}>{cart.length} items</span>
-            </div>
+            <Link href="/checkout" style={{ textDecoration: "none" }}>
+              <div className="glass-card" style={{ padding: "12px 20px", display: "flex", alignItems: "center", gap: "10px", cursor: "pointer", transition: "all 0.2s", border: "1px solid rgba(57,255,20,0.3)" }}>
+                <ShoppingCart size={16} color="#39FF14" />
+                <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "14px", fontWeight: 600, color: "#efffe3" }}>{cart.length} items</span>
+                <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "12px", color: "#39FF14", marginLeft: "8px", borderLeft: "1px solid rgba(255,255,255,0.1)", paddingLeft: "8px" }}>Checkout &rarr;</span>
+              </div>
+            </Link>
           </div>
         </motion.div>
 

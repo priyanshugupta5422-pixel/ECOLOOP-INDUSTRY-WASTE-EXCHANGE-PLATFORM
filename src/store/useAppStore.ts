@@ -51,6 +51,7 @@ interface AppState {
   cart: Product[];
   addToCart: (product: Product) => void;
   removeFromCart: (id: string) => void;
+  clearCart: () => void;
 
   // Classification
   classificationResult: ClassificationResult | null;
@@ -82,6 +83,7 @@ export const useAppStore = create<AppState>((set) => ({
     })),
   removeFromCart: (id) =>
     set((state) => ({ cart: state.cart.filter((p) => p.id !== id) })),
+  clearCart: () => set({ cart: [] }),
 
   // Classification state
   classificationResult: null,
