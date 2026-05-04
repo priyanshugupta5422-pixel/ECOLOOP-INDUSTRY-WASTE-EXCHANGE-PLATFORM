@@ -3,8 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { LayoutDashboard, ScanLine, ShoppingCart, BarChart2, Leaf, Menu, X } from "lucide-react";
+import { LayoutDashboard, ScanLine, ShoppingCart, BarChart2, Leaf, Menu, X, LogOut, User } from "lucide-react";
 import { useState } from "react";
+import { useAppStore } from "@/store/useAppStore";
+import LoginModal from "@/components/ui/LoginModal";
 
 // Navigation links matching the Stitch design (Dashboard, Classification, Marketplace, Analytics)
 const navLinks = [
@@ -17,6 +19,8 @@ const navLinks = [
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
+  const { isAuthenticated, user, logout } = useAppStore();
 
   return (
     <>
@@ -111,24 +115,45 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Status chip + hamburger */}
-          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-            <div
-              className="chip chip-green"
-              style={{ display: "flex", alignItems: "center", gap: "6px" }}
-            >
-              <span
-                style={{
-                  width: "6px",
-                  height: "6px",
-                  borderRadius: "50%",
-                  background: "#39FF14",
-                  boxShadow: "0 0 6px rgba(57, 255, 20, 0.8)",
-                  animation: "pulse 2s ease-in-out infinite",
-                }}
-              />
-              System Online
-            </div>
+          {/* Auth & Mobile Menu */}
+          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+            
+            {isAuthenticated && user ? (
+              <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                  <div style={{ 
+                    width: "32px", height: "32px", borderRadius: "50%", 
+                    background: "rgba(57,255,20,0.1)", border: "1px solid rgba(57,255,20,0.3)",
+                    display: "flex", alignItems: "center", justifyContent: "center"
+                  }}>
+                    <User size={16} color="#39FF14" />
+                  </div>
+                  <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "14px", fontWeight: 600, color: "#efffe3", display: "none" }} className="desktop-nav">
+                    {user.name}
+                  </span>
+                </div>
+                <button
+                  onClick={logout}
+                  style={{
+                    display: "flex", alignItems: "center", gap: "6px", padding: "6px 12px", borderRadius: "6px",
+                    background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "#baccb0",
+                    fontFamily: "'Space Grotesk', sans-serif", fontSize: "13px", cursor: "pointer", transition: "all 0.15s"
+                  }}
+                  onMouseOver={(e) => { e.currentTarget.style.color = "#ff4d4d"; e.currentTarget.style.borderColor = "rgba(255,77,77,0.3)"; e.currentTarget.style.background = "rgba(255,77,77,0.05)"; }}
+                  onMouseOut={(e) => { e.currentTarget.style.color = "#baccb0"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)"; e.currentTarget.style.background = "rgba(255,255,255,0.05)"; }}
+                >
+                  <LogOut size={14} /> <span className="desktop-nav">Log Out</span>
+                </button>
+              </div>
+            ) : (
+              <button 
+                onClick={() => setLoginModalOpen(true)}
+                className="btn-primary"
+                style={{ padding: "8px 16px", fontSize: "13px" }}
+              >
+                Log In
+              </button>
+            )}
 
             {/* Hamburger for mobile */}
             <button
@@ -202,6 +227,7 @@ export default function Navbar() {
           .mobile-menu-btn { display: flex !important; }
         }
       `}</style>
+      <LoginModal isOpen={loginModalOpen} onClose={() => setLoginModalOpen(false)} />
     </>
   );
 }

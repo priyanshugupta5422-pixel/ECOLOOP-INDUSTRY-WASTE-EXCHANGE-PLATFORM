@@ -20,6 +20,13 @@ export interface Product {
   description: string;
 }
 
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  avatar?: string;
+}
+
 export interface ClassificationResult {
   materials: Array<{
     name: string;
@@ -34,6 +41,12 @@ export interface ClassificationResult {
 }
 
 interface AppState {
+  // Authentication
+  isAuthenticated: boolean;
+  user: User | null;
+  login: (user: User) => void;
+  logout: () => void;
+
   // Cart
   cart: Product[];
   addToCart: (product: Product) => void;
@@ -53,6 +66,12 @@ interface AppState {
 }
 
 export const useAppStore = create<AppState>((set) => ({
+  // Auth state
+  isAuthenticated: false,
+  user: null,
+  login: (user) => set({ isAuthenticated: true, user }),
+  logout: () => set({ isAuthenticated: false, user: null }),
+
   // Cart state
   cart: [],
   addToCart: (product) =>
