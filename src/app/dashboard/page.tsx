@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { TrendingUp, DollarSign, Recycle, Cpu, LayoutDashboard, RefreshCw } from "lucide-react";
+import AuthGuard from "@/components/auth/AuthGuard";
 
 const dashboardData = {
   co2Saved: "4,281.5", co2Unit: "Metric Tons / Quarter",
@@ -65,7 +66,8 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div style={{ minHeight: "calc(100vh - 64px)", background: "#131313", padding: "32px 24px" }}>
+    <AuthGuard>
+      <div style={{ minHeight: "calc(100vh - 64px)", background: "#131313", padding: "32px 24px" }}>
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
@@ -149,7 +151,8 @@ export default function DashboardPage() {
             </div>
           ))}
         </motion.div>
+        </div>
       </div>
-    </div>
+    </AuthGuard>
   );
 }

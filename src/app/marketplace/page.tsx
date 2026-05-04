@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingCart, Search, MapPin, CheckCircle2, X } from "lucide-react";
 import { useAppStore, type Product } from "@/store/useAppStore";
+import AuthGuard from "@/components/auth/AuthGuard";
 
 const PRODUCTS: Product[] = [
   {
@@ -75,7 +76,8 @@ export default function MarketplacePage() {
   };
 
   return (
-    <div style={{ minHeight: "calc(100vh - 64px)", background: "#131313", padding: "32px 24px" }}>
+    <AuthGuard>
+      <div style={{ minHeight: "calc(100vh - 64px)", background: "#131313", padding: "32px 24px" }}>
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} style={{ marginBottom: "32px" }}>
@@ -246,7 +248,8 @@ export default function MarketplacePage() {
             </div>
           )}
         </AnimatePresence>
+        </div>
       </div>
-    </div>
+    </AuthGuard>
   );
 }

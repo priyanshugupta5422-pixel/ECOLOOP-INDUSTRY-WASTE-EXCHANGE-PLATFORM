@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { UploadCloud, ScanLine, CheckCircle2, Activity, Cpu, Zap, Globe } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
+import AuthGuard from "@/components/auth/AuthGuard";
 
 // Neural engine specs from Stitch design
 const engineSpecs = [
@@ -102,7 +103,8 @@ export default function ClassificationPage() {
   };
 
   return (
-    <div style={{ minHeight: "calc(100vh - 64px)", background: "#131313", padding: "32px 24px" }}>
+    <AuthGuard>
+      <div style={{ minHeight: "calc(100vh - 64px)", background: "#131313", padding: "32px 24px" }}>
       <div style={{ maxWidth: "900px", margin: "0 auto" }}>
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} style={{ marginBottom: "32px" }}>
@@ -265,7 +267,8 @@ export default function ClassificationPage() {
             </p>
           </div>
         </motion.div>
+        </div>
       </div>
-    </div>
+    </AuthGuard>
   );
 }

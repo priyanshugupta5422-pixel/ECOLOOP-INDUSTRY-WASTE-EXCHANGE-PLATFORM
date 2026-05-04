@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { BarChart2, TrendingUp, Zap, Globe } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar } from "recharts";
+import AuthGuard from "@/components/auth/AuthGuard";
 
 // Monthly performance data
 const monthlyData = [
@@ -38,7 +39,8 @@ function CustomTooltip({ active, payload, label }: any) {
 
 export default function AnalyticsPage() {
   return (
-    <div style={{ minHeight: "calc(100vh - 64px)", background: "#131313", padding: "32px 24px" }}>
+    <AuthGuard>
+      <div style={{ minHeight: "calc(100vh - 64px)", background: "#131313", padding: "32px 24px" }}>
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} style={{ marginBottom: "32px" }}>
@@ -133,7 +135,8 @@ export default function AnalyticsPage() {
             </table>
           </div>
         </motion.div>
+        </div>
       </div>
-    </div>
+    </AuthGuard>
   );
 }

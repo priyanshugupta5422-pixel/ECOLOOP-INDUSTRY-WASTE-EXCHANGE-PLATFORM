@@ -1,12 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { LayoutDashboard, ScanLine, ShoppingCart, BarChart2, Leaf, Menu, X, LogOut, User } from "lucide-react";
 import { useState } from "react";
 import { useAppStore } from "@/store/useAppStore";
-import LoginModal from "@/components/ui/LoginModal";
 
 // Navigation links matching the Stitch design (Dashboard, Classification, Marketplace, Analytics)
 const navLinks = [
@@ -18,9 +17,14 @@ const navLinks = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [loginModalOpen, setLoginModalOpen] = useState(false);
   const { isAuthenticated, user, logout } = useAppStore();
+
+  const handleLogout = () => {
+    logout();
+    router.push("/login");
+  };
 
   return (
     <>
@@ -133,7 +137,7 @@ export default function Navbar() {
                   </span>
                 </div>
                 <button
-                  onClick={logout}
+                  onClick={handleLogout}
                   style={{
                     display: "flex", alignItems: "center", gap: "6px", padding: "6px 12px", borderRadius: "6px",
                     background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "#baccb0",
@@ -146,13 +150,13 @@ export default function Navbar() {
                 </button>
               </div>
             ) : (
-              <button 
-                onClick={() => setLoginModalOpen(true)}
+              <Link 
+                href="/login"
                 className="btn-primary"
-                style={{ padding: "8px 16px", fontSize: "13px" }}
+                style={{ padding: "8px 16px", fontSize: "13px", textDecoration: "none" }}
               >
                 Log In
-              </button>
+              </Link>
             )}
 
             {/* Hamburger for mobile */}
@@ -227,7 +231,6 @@ export default function Navbar() {
           .mobile-menu-btn { display: flex !important; }
         }
       `}</style>
-      <LoginModal isOpen={loginModalOpen} onClose={() => setLoginModalOpen(false)} />
     </>
   );
 }
