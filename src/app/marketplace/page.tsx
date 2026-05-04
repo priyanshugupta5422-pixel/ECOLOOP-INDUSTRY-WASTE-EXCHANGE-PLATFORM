@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingCart, Search, MapPin, CheckCircle2, X } from "lucide-react";
+import { ShoppingCart, Search, MapPin, CheckCircle2, X, Trash2 } from "lucide-react";
 import { useAppStore, type Product } from "@/store/useAppStore";
 import AuthGuard from "@/components/auth/AuthGuard";
 import Link from "next/link";
@@ -59,13 +59,15 @@ const categoryColors: Record<string, string> = {
 export default function MarketplacePage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [ordered, setOrdered] = useState<string | null>(null);
-  const { cart, addToCart, removeFromCart, categoryFilter, setCategoryFilter, searchQuery, setSearchQuery } = useAppStore();
+  const { cart, addToCart, removeFromCart, categoryFilter, setCategoryFilter, searchQuery, setSearchQuery, customProducts, deletedProductIds, deleteProduct } = useAppStore();
 
-  const filtered = PRODUCTS.filter((p) => {
+  const allProducts = [...PRODUCTS, ...customProducts];
+
+  const filtered = allProducts.filter((p) => {
     const matchCat = categoryFilter === "all" || categoryFilter === "All" || p.category === categoryFilter;
     const matchSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       p.location.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchCat && matchSearch;
+    return matchCat && matchSearch && !deletedProductIds.includes(p.id);
   });
 
   const inCart = (id: string) => cart.some((p) => p.id === id);
@@ -152,7 +154,16 @@ export default function MarketplacePage() {
                   <span className="chip" style={{ background: `${color}12`, color: color, border: `1px solid ${color}25`, fontFamily: "'Space Grotesk', sans-serif", fontSize: "11px", letterSpacing: "0.05em", textTransform: "uppercase", padding: "4px 10px", borderRadius: "9999px" }}>
                     {product.category}
                   </span>
-                  <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "12px", color: "#85967c" }}>#{product.batch}</span>
+                  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                    <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "12px", color: "#85967c" }}>#{product.batch}</span>
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); deleteProduct(product.id); }} 
+                      style={{ background: "transparent", border: "none", color: "#ff4d4d", cursor: "pointer", opacity: 0.6, display: "flex", alignItems: "center" }}
+                      title="Delete Product"
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  </div>
                 </div>
 
                 <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "17px", fontWeight: 600, color: "#efffe3", marginBottom: "8px" }}>{product.title}</h3>

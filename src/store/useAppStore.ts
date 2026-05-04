@@ -64,6 +64,14 @@ interface AppState {
   setCategoryFilter: (cat: string) => void;
   searchQuery: string;
   setSearchQuery: (q: string) => void;
+
+  // Seller custom products
+  customProducts: Product[];
+  addCustomProduct: (product: Product) => void;
+
+  // Deleted products (hides both default and custom products)
+  deletedProductIds: string[];
+  deleteProduct: (id: string) => void;
 }
 
 export const useAppStore = create<AppState>((set) => ({
@@ -96,4 +104,12 @@ export const useAppStore = create<AppState>((set) => ({
   setCategoryFilter: (cat) => set({ categoryFilter: cat }),
   searchQuery: '',
   setSearchQuery: (q) => set({ searchQuery: q }),
+
+  // Custom seller products
+  customProducts: [],
+  addCustomProduct: (product) => set((state) => ({ customProducts: [...state.customProducts, product] })),
+
+  // Deleted products
+  deletedProductIds: [],
+  deleteProduct: (id) => set((state) => ({ deletedProductIds: [...state.deletedProductIds, id] })),
 }));

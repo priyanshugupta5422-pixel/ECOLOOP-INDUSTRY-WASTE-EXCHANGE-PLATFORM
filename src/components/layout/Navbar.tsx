@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { LayoutDashboard, ScanLine, ShoppingCart, BarChart2, Leaf, Menu, X, LogOut, User } from "lucide-react";
+import { LayoutDashboard, ScanLine, ShoppingCart, BarChart2, Leaf, Menu, X, LogOut, User, PackagePlus } from "lucide-react";
 import { useState } from "react";
 import { useAppStore } from "@/store/useAppStore";
 
@@ -12,6 +12,7 @@ const navLinks = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/classification", label: "Classification", icon: ScanLine },
   { href: "/marketplace", label: "Marketplace", icon: ShoppingCart },
+  { href: "/sell", label: "List Material", icon: PackagePlus },
   { href: "/analytics", label: "Analytics", icon: BarChart2 },
 ];
 
