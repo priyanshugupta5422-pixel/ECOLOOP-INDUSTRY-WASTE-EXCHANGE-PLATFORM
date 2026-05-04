@@ -78,7 +78,7 @@ export default function ClassificationPage() {
         clearInterval(interval);
         setProgress(100);
         setTimeout(() => {
-          setClassificationResult(data);
+          setClassificationResult(data.data);
           setStep("done");
           setIsClassifying(false);
         }, 400);
