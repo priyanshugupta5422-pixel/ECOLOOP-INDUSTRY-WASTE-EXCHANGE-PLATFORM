@@ -1,0 +1,277 @@
+@import "tailwindcss";
+
+/* =============================================
+   EcoLoop AI – Design System (Stitch-Faithful)
+   Primary: #39FF14 (Neon Green)
+   Background: #131313 (Obsidian)
+   Fonts: Space Grotesk (headlines) + Inter (body)
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Surface tiers */
+  --color-bg: #131313;
+  --color-surface: #161616;
+  --color-surface-low: #1c1b1b;
+  --color-surface-mid: #201f1f;
+  --color-surface-high: #2a2a2a;
+  --color-surface-highest: #353534;
+
+  /* Text */
+  --color-on-surface: #e5e2e1;
+  --color-on-surface-muted: #baccb0;
+
+  /* Primary – Neon Green */
+  --color-primary: #39FF14;
+  --color-primary-dim: #2ae500;
+  --color-primary-text: #efffe3;
+  --color-on-primary: #053900;
+
+  /* Secondary – Cyan */
+  --color-secondary: #00EEFC;
+  --color-secondary-dim: #00dbe9;
+
+  /* Tertiary – Violet */
+  --color-tertiary: #8E2DE2;
+
+  /* Borders & outlines */
+  --color-outline: #85967c;
+  --color-outline-variant: #3c4b35;
+
+  /* Glow */
+  --glow-primary: 0 0 20px rgba(57, 255, 20, 0.3), 0 0 40px rgba(57, 255, 20, 0.1);
+  --glow-secondary: 0 0 15px rgba(0, 238, 252, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-on-surface);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-outline-variant);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-outline);
+}
+
+/* =============================================
+   GLASS CARD UTILITY
+   ============================================= */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+}
+
+.glass-card-glow {
+  background: rgba(57, 255, 20, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(57, 255, 20, 0.15);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.08);
+}
+
+/* =============================================
+   BUTTON UTILITIES
+   ============================================= */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-dim);
+  box-shadow: var(--glow-primary);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--color-primary);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 1px solid var(--color-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-ghost:hover {
+  background: rgba(57, 255, 20, 0.08);
+  box-shadow: var(--glow-primary);
+}
+
+/* =============================================
+   STATUS CHIPS
+   ============================================= */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 9999px;
+}
+
+.chip-green {
+  background: rgba(57, 255, 20, 0.12);
+  color: var(--color-primary);
+  border: 1px solid rgba(57, 255, 20, 0.25);
+}
+
+.chip-cyan {
+  background: rgba(0, 238, 252, 0.1);
+  color: var(--color-secondary);
+  border: 1px solid rgba(0, 238, 252, 0.2);
+}
+
+.chip-violet {
+  background: rgba(142, 45, 226, 0.1);
+  color: #ddb7ff;
+  border: 1px solid rgba(142, 45, 226, 0.25);
+}
+
+.chip-amber {
+  background: rgba(255, 185, 0, 0.1);
+  color: #ffd700;
+  border: 1px solid rgba(255, 185, 0, 0.2);
+}
+
+/* =============================================
+   NEON TEXT
+   ============================================= */
+.text-neon {
+  color: var(--color-primary);
+  text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* =============================================
+   ANIMATED GRID BACKGROUND
+   ============================================= */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(57, 255, 20, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57, 255, 20, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* =============================================
+   INPUT STYLES
+   ============================================= */
+.input-field {
+  background: var(--color-surface-mid);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: 8px;
+  color: var(--color-on-surface);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.input-field:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(57, 255, 20, 0.1);
+}
+
+.input-field::placeholder {
+  color: var(--color-outline);
+}
+
+/* =============================================
+   CHART OVERRIDES
+   ============================================= */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(255, 255, 255, 0.05) !important;
+}
+
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: var(--color-surface-high) !important;
+  border: 1px solid rgba(57, 255, 20, 0.2) !important;
+  border-radius: 8px !important;
+}
+
+/* =============================================
+   PAGE TRANSITIONS
+   ============================================= */
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}

@@ -1,0 +1,45 @@
+export const initialListings = [
+  {
+    id: "1",
+    title: "High-Grade Aluminum Scrap",
+    type: "Metal",
+    quantity: 500,
+    unit: "kg",
+    predictedValue: 1200,
+    location: "Detroit, MI",
+    imageUrl: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&q=80&w=800",
+    confidenceScore: 0.98,
+  },
+  {
+    id: "2",
+    title: "Industrial Plastic Offcuts",
+    type: "Plastic",
+    quantity: 1200,
+    unit: "kg",
+    predictedValue: 450,
+    location: "Austin, TX",
+    imageUrl: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80&w=800",
+    confidenceScore: 0.94,
+  },
+  {
+    id: "3",
+    title: "Copper Wire Rejects",
+    type: "Metal",
+    quantity: 200,
+    unit: "kg",
+    predictedValue: 1800,
+    location: "San Jose, CA",
+    imageUrl: "https://images.unsplash.com/photo-1582987171731-f1f31f9abf3d?auto=format&fit=crop&q=80&w=800",
+    confidenceScore: 0.99,
+  },
+];
+
+export const predictionData = [
+  { name: 'Jan', plastic: 4000, metal: 2400, organic: 2400 },
+  { name: 'Feb', plastic: 3000, metal: 1398, organic: 2210 },
+  { name: 'Mar', plastic: 2000, metal: 9800, organic: 2290 },
+  { name: 'Apr', plastic: 2780, metal: 3908, organic: 2000 },
+  { name: 'May', plastic: 1890, metal: 4800, organic: 2181 },
+  { name: 'Jun', plastic: 2390, metal: 3800, organic: 2500 },
+  { name: 'Jul', plastic: 3490, metal: 4300, organic: 2100 },
+];
