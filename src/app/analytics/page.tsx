@@ -59,7 +59,7 @@ export default function AnalyticsPage() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px", marginBottom: "24px" }}>
           {[
             { label: "Total CO₂ Saved", value: "24,832 MT", icon: Globe, color: "#39FF14", sub: "Lifetime" },
-            { label: "Revenue Generated", value: "$4.2M", icon: TrendingUp, color: "#00EEFC", sub: "Trailing 12M" },
+            { label: "Revenue Generated", value: "₹4.2M", icon: TrendingUp, color: "#00EEFC", sub: "Trailing 12M" },
             { label: "Processing Speed", value: "2.4 t/h", icon: Zap, color: "#8E2DE2", sub: "Average" },
             { label: "Streams Active", value: "12", icon: BarChart2, color: "#FFB900", sub: "Right now" },
           ].map((m, i) => (

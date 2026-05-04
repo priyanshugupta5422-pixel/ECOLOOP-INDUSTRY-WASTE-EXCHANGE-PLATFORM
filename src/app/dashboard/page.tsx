@@ -3,13 +3,13 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
-import { TrendingUp, DollarSign, Recycle, Cpu, LayoutDashboard, RefreshCw } from "lucide-react";
+import { TrendingUp, IndianRupee, Recycle, Cpu, LayoutDashboard, RefreshCw } from "lucide-react";
 import AuthGuard from "@/components/auth/AuthGuard";
 
 const dashboardData = {
   co2Saved: "4,281.5", co2Unit: "Metric Tons / Quarter",
-  costSavings: "$842.1K", costUnit: "USD Optimized",
-  circularRate: "94.8%", circularUnit: "Waste-to-Resource Efficiency",
+  costSavings: "₹842.1K", costUnit: "INR Optimized",
+  circularRate: "94.2%", circularUnit: "Resource Efficiency",
   aiPrecision: "99.9%", aiUnit: "Classification Accuracy",
 };
 
@@ -60,7 +60,7 @@ export default function DashboardPage() {
 
   const kpis = [
     { label: "CO₂ Saved", value: dashboardData.co2Saved, unit: dashboardData.co2Unit, icon: Recycle, color: "#39FF14" },
-    { label: "Cost Savings", value: dashboardData.costSavings, unit: dashboardData.costUnit, icon: DollarSign, color: "#00EEFC" },
+    { label: "Cost Savings", value: dashboardData.costSavings, unit: dashboardData.costUnit, icon: IndianRupee, color: "#00EEFC" },
     { label: "Circular Rate", value: dashboardData.circularRate, unit: dashboardData.circularUnit, icon: TrendingUp, color: "#8E2DE2" },
     { label: "AI Precision", value: dashboardData.aiPrecision, unit: dashboardData.aiUnit, icon: Cpu, color: "#FFB900" },
   ];
@@ -114,7 +114,7 @@ export default function DashboardPage() {
         {/* Area Chart */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="glass-card" style={{ padding: "24px", marginBottom: "24px" }}>
           <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "16px", fontWeight: 600, color: "#efffe3", marginBottom: "4px" }}>Environmental Impact Over Time</h3>
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12px", color: "#85967c", marginBottom: "24px" }}>CO₂ Reduction (MT) & Cost Savings ($K)</p>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12px", color: "#85967c", marginBottom: "24px" }}>CO₂ Reduction (MT) & Cost Savings (₹K)</p>
           <ResponsiveContainer width="100%" height={240}>
             <AreaChart data={impactChartData}>
               <defs>
@@ -132,7 +132,7 @@ export default function DashboardPage() {
               <YAxis tick={{ fontFamily: "'Space Grotesk'", fontSize: 11, fill: "#85967c" }} axisLine={false} tickLine={false} />
               <Tooltip content={<CustomTooltip />} />
               <Area type="monotone" dataKey="co2" name="CO₂ Saved" stroke="#39FF14" strokeWidth={2} fill="url(#co2Gradient)" dot={false} />
-              <Area type="monotone" dataKey="savings" name="Savings ($K)" stroke="#00EEFC" strokeWidth={2} fill="url(#savingsGradient)" dot={false} />
+              <Area type="monotone" dataKey="savings" name="Savings (₹K)" stroke="#00EEFC" strokeWidth={2} fill="url(#savingsGradient)" dot={false} />
             </AreaChart>
           </ResponsiveContainer>
         </motion.div>

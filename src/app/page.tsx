@@ -33,7 +33,7 @@ const fadeUp = {
 const heroStats = [
   { value: "+84%", label: "Resource Recovery Rate" },
   { value: "99.9%", label: "Classification Accuracy" },
-  { value: "$2.4M", label: "Monthly Trade Volume" },
+  { value: "₹2.4M", label: "Monthly Trade Volume" },
 ];
 
 // Core capabilities matching Stitch content

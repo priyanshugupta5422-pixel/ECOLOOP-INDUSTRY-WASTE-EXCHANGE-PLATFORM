@@ -84,7 +84,7 @@ export default function CheckoutPage() {
                       </div>
                       <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
                         <span style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#39FF14", fontWeight: 600 }}>
-                          ${(parseFloat(item.price.replace(/[^0-9.]/g, "")) * parseFloat(item.quantity.replace(/[^0-9.]/g, ""))).toLocaleString()}
+                          ₹{(parseFloat(item.price.replace(/[^0-9.]/g, "")) * parseFloat(item.quantity.replace(/[^0-9.]/g, ""))).toLocaleString()}
                         </span>
                         {!isSuccess && (
                           <button onClick={() => removeFromCart(item.id)} style={{ background: "transparent", border: "none", color: "#ff4d4d", cursor: "pointer", opacity: 0.7 }} title="Remove item">
@@ -99,7 +99,7 @@ export default function CheckoutPage() {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "24px", paddingTop: "16px", borderTop: "1px solid rgba(57,255,20,0.2)" }}>
                   <span style={{ fontSize: "16px", color: "#baccb0" }}>Total Estimated Value</span>
                   <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "24px", fontWeight: 700, color: "#39FF14" }}>
-                    ${totalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    ₹{totalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </span>
                 </div>
               </motion.div>

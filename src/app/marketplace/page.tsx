@@ -10,37 +10,37 @@ import Link from "next/link";
 const PRODUCTS: Product[] = [
   {
     id: "p-001", title: "HDPE Polymer Regrind", batch: "PR-9022", location: "Frankfurt, GER",
-    price: "$420/MT", unit: "MT", quantity: "45.5 MT", resourcePotential: "92% Recovery",
+    price: "₹420/MT", unit: "MT", quantity: "45.5 MT", resourcePotential: "92% Recovery",
     category: "Polymers", purityScore: 92,
     description: "High-density polyethylene regrind suitable for re-extrusion into packaging films and pipes. Contaminant-free batch with consistent MFI.",
   },
   {
     id: "p-002", title: "Grade 316 Stainless Shavings", batch: "MS-4410", location: "Lyon, FRA",
-    price: "$1,280/MT", unit: "MT", quantity: "12.8 MT", resourcePotential: "88% Circular",
+    price: "₹1,280/MT", unit: "MT", quantity: "12.8 MT", resourcePotential: "88% Circular",
     category: "Metals", purityScore: 88,
     description: "316-grade stainless steel machining shavings from aerospace component manufacturing. Low oil contamination, ready for EAF remelting.",
   },
   {
     id: "p-003", title: "Secondary Aluminum Ingots", batch: "AL-003", location: "Chicago, USA",
-    price: "$2,100/MT", unit: "MT", quantity: "85.0 MT", resourcePotential: "99% Purity",
+    price: "₹2,100/MT", unit: "MT", quantity: "85.0 MT", resourcePotential: "99% Purity",
     category: "Metals", purityScore: 99,
     description: "Secondary 6061-T6 aluminum ingots recovered from aerospace scrap. Independently certified 99% purity. Ready for immediate casting.",
   },
   {
     id: "p-004", title: "Mixed Server E-Waste", batch: "EW-2219", location: "Tokyo, JPN",
-    price: "$8,500/Lot", unit: "Lot", quantity: "2.4 MT", resourcePotential: "Au/Cu Extraction",
+    price: "₹8,500/Lot", unit: "Lot", quantity: "2.4 MT", resourcePotential: "Au/Cu Extraction",
     category: "E-Waste", purityScore: 85,
     description: "Decommissioned enterprise server boards, HDDs, and PSUs. High precious metal concentration — Au, Ag, Cu, Pd. WEEE compliant.",
   },
   {
     id: "p-005", title: "PET Polymer Flakes", batch: "PF-0721", location: "Mumbai, IND",
-    price: "$380/MT", unit: "MT", quantity: "30.0 MT", resourcePotential: "95% Food-Grade",
+    price: "₹380/MT", unit: "MT", quantity: "30.0 MT", resourcePotential: "95% Food-Grade",
     category: "Polymers", purityScore: 95,
     description: "Washed PET flakes from post-consumer bottles. Food-grade quality after cleaning. Suitable for fiber extrusion and sheet manufacturing.",
   },
   {
     id: "p-006", title: "Industrial Glass Fiber", batch: "GF-1103", location: "Berlin, GER",
-    price: "$620/MT", unit: "MT", quantity: "18.2 MT", resourcePotential: "80% Reusable",
+    price: "₹620/MT", unit: "MT", quantity: "18.2 MT", resourcePotential: "80% Reusable",
     category: "Glass/Fiber", purityScore: 80,
     description: "E-glass fiber off-cuts from wind turbine blade production. Suitable for GMT composites and acoustic insulation panels.",
   },
